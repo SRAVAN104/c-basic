@@ -17,5 +17,15 @@ steps:
   displayName: 'Build solution BlazorApp1.sln'
   inputs:
     solution: BlazorApp1.sln
+- task: VSBuild@1
+  inputs:
+    solution: '**\*.sln'
+- task: VSTest@3
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\bin\**\*test.dll
+      **\bin\**\*tests.dll
+    searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: PublishBuildArtifacts@1
