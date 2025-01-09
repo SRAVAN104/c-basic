@@ -5,28 +5,20 @@
 
 trigger:
 - main
-
 pool:
-  name: default
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-
+  name: Default
 steps:
 - task: NuGetToolInstaller@1
+  displayName: 'Use NuGet 12.6.2'
+  inputs:
+    versionSpec: 12.6.2
 
 - task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-- task: VSBuild@1
-  inputs:
-    solution: '**\*.sln'
-    restoreNugetPackages: true
+  displayName: 'NuGet restore'
 
-- task: VSTest@2
+- task: VSBuild@1
+  displayName: 'Build solution BlazorApp1.sln'
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    solution: BlazorApp1.sln
+
 - task: PublishBuildArtifacts@1
