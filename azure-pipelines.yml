@@ -9,11 +9,6 @@ pool:
   name: Default
 steps:
 - task: NuGetToolInstaller@1
-  displayName: 'Use NuGet 12.6.2'
-  inputs:
-    versionSpec: 12.6.2
-    checkLatest: true
-
 
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
