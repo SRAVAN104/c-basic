@@ -27,5 +27,4 @@ steps:
       **\bin\**\*test.dll
       **\bin\**\*tests.dll
     searchFolder: '$(System.DefaultWorkingDirectory)'
-
 - task: PublishBuildArtifacts@1
